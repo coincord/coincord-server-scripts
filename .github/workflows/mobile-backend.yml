@@ -1,0 +1,27 @@
+# This workflow will run bundle analyzer and then publish report to the artifact
+
+name: Deploy To Core Server
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  install-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          # ssh host
+          host: "167.172.184.186"
+          username: "deployer"
+          # ssh password
+          # synchronous execution if multiple hosts
+          # include more ciphers with use_insecure_cipher
+          # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+          key: ${{secrets.SERVER_MOBILE_PRIVATE_SSH}}
+          # script: 'cd ~/coincord/coincord-core-wallet && git checkout deploy && git pull origin deploy && npm install && npx prisma migrate dev && pm2 restart server-start.sh '
+          script: "cd ~/coincord/coincord-server-scripts && git checkout master && git pull origin master"
+          # path of ssh private key
