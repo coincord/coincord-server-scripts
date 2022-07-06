@@ -1,12 +1,13 @@
 #!/bin/bash
 
-while getopts d:c:f:db flag
+while getopts d:c:f:db:u flag
 do
     case "${flag}" in
         d) directory=${OPTARG};;
         c) container=${OPTARG};;
         f) file=${OPTARG};;
         db) database=${OPTARG};;
+        u) user=-${OPTARG};;
     esac
 done
 
