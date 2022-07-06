@@ -17,4 +17,4 @@ fi
 NOW=$(date +%Y%m%d%H%M%S)
 SQL_BACKUP=${NOW}_database
 
-docker exec -t $container pg_dumpall -c -U postgres | gzip > $directory/$container/dump_$SQL_BACKUP.gz
+docker exec -t $container pg_dumpall -c -U $user | gzip > $directory/$container/dump_$SQL_BACKUP.gz

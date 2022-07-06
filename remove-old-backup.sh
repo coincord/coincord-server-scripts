@@ -11,5 +11,5 @@ done
 
 if [ ! -d $directory/$container]; then
   echo "FOUND BACKUPS"
-  rm -f  $directory/$container/$(date +%Y%m%d* --date='1 week ago').gz
+  rm -f  $directory/$container/dump_$(date +%Y%m%d* --date='1 week ago')_database.gz
 fi
